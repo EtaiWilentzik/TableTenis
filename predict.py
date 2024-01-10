@@ -26,7 +26,7 @@ out = cv2.VideoWriter(video_path_out, cv2.VideoWriter_fourcc(*'mp4v'), int(cap.g
 #33 is the best
 # 7 is where the table is good
 # now trying 9 because it finishes 800 runs
-model_path = os.path.join('.', 'runs', 'detect', 'train8', 'weights', 'last.pt')
+model_path = os.path.join('.', 'train8', 'weights', 'last.pt')
 
 # Load a model
 model = YOLO(model_path)  # load a custom model
