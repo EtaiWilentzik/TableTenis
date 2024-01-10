@@ -17,5 +17,5 @@ class Constants:
     OUT_FROM_LEFT = 10
     OUT_FROM_RIGHT = 11
 
-    RIGHT = 12
-    LEFT = 13
+    RIGHT = 0
+    LEFT = 1
