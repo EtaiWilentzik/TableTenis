@@ -32,11 +32,11 @@ while ret:
     start_time = time.time()
     # max_det=3  in model.predict say how many object i want to detect
     results = model.predict(frame)[0]
-
+    # just a useless comment
     for result in results.boxes.data.tolist():
         x1, y1, x2, y2, score, class_id = result
-        xCenter = (int)((int(x1) + int(x2)) / 2)
-        yCenter = (int)((int(y1) + int(y2)) / 2)
+        xCenter = int(((int(x1) + int(x2)) / 2))
+        yCenter = int(((int(y1) + int(y2)) / 2))
 
         if score > threshold:
             if class_id == 2:
