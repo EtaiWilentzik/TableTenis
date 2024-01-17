@@ -9,7 +9,6 @@ class Table:
         return self.top_left
 
     def set_top_left(self, top_left):
-        print("\n\n\n\n\n\n",top_left,"\n\n\n\n\n\n")
         self.top_left = top_left
 
     def get_bottom_right(self):
