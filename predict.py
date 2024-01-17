@@ -7,7 +7,7 @@ from Table import Table
 
 # when the y in the image is more high its more small in the code (like arkanoid)
 
-
+#hello
 VIDEOS_DIR = os.path.join('.', 'videos')
 
 video_path = os.path.join(VIDEOS_DIR, 'short.mp4')
