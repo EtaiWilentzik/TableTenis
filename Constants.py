@@ -22,3 +22,15 @@ class Constants:
 
     X_COORDINATE = 0
     Y_COORDINATE = 1
+
+    EPSILON = 100
+
+    LAST = -1
+
+    IS_BOUNCE_VERTICAL = 2
+    IS_BOUNCE_HORIZONTAL = 3
+
+    FPS = 30
+
+    GREEN = (0, 255, 0)
+
