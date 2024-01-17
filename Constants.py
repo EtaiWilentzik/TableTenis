@@ -17,5 +17,8 @@ class Constants:
     OUT_FROM_LEFT = 10
     OUT_FROM_RIGHT = 11
 
-    RIGHT = 0
-    LEFT = 1
+    LEFT = 0
+    RIGHT = 1
+
+    X_COORDINATE = 0
+    Y_COORDINATE = 1
