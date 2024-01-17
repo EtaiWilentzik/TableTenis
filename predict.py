@@ -26,7 +26,6 @@ model_path = os.path.join('.', 'train8', 'weights', 'last.pt')
 model = YOLO(model_path)  # load a custom model
 counterFrame = 60
 counterUntilFrame = 0
-x1table, y1table, x2table, y2table = 0, 0, 0, 0
 threshold = 0.5
 ball = Ball()
 table = Table()
@@ -48,10 +47,10 @@ while ret:
             if class_id == 0:
                 ball.set_coordinates(xCenter, yCenter)
                 # top left is first, bottom right is second, color is third, and thickness is the last
-            cv2.rectangle(frame, table.get_top_left(), table.get_bottom_right(), (0, 255, 0), 4)
+            cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 4)
             cv2.putText(frame, results.names[int(class_id)].upper(), (int(x1), int(y1 - 10)),
                         cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3, cv2.LINE_AA, )
-            ball.bounce(table)
+            ball.bounce_vertical(table)
             tmp_positions = ball.get_positions()
             for i, pos in enumerate(tmp_positions):
                 if pos[2]:
