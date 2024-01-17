@@ -4,7 +4,7 @@ import cv2
 import time
 from Ball import Ball
 from Table import Table
-
+from Constants import Constants
 # when the y in the image is more high its more small in the code (like arkanoid)
 
 
@@ -24,7 +24,6 @@ model_path = os.path.join('.', 'train8', 'weights', 'last.pt')
 
 # Load a model
 model = YOLO(model_path)  # load a custom model
-counterFrame = 60
 counterUntilFrame = 0
 threshold = 0.5
 ball = Ball()
@@ -40,16 +39,20 @@ while ret:
         yCenter = (int)((int(y1) + int(y2)) / 2)
 
         if score > threshold:
-            if class_id == 2 and counterUntilFrame == counterFrame:
-                table.set_bottom_right((x2, y2))
-                table.set_top_left((x1, y1))
+            if class_id == 2:
+                if counterUntilFrame <= 2 * Constants.FPS:
+                    # doesn't draw the rectangle without these 2 lines below
+                    table.set_top_left((x1, y1))
+                    table.set_bottom_right((x2, y2))
+
+                    table.set_table((x1, y2), (x2, y2))
 
             if class_id == 0:
                 ball.set_coordinates(xCenter, yCenter)
                 # top left is first, bottom right is second, color is third, and thickness is the last
-            cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 4)
+            cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), Constants.GREEN, 4)
             cv2.putText(frame, results.names[int(class_id)].upper(), (int(x1), int(y1 - 10)),
-                        cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3, cv2.LINE_AA, )
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.3, Constants.GREEN, 3, cv2.LINE_AA, )
             ball.bounce_vertical(table)
             tmp_positions = ball.get_positions()
             for i, pos in enumerate(tmp_positions):

@@ -30,3 +30,7 @@ class Constants:
     IS_BOUNCE_VERTICAL = 2
     IS_BOUNCE_HORIZONTAL = 3
 
+    FPS = 30
+
+    GREEN = (0, 255, 0)
+
