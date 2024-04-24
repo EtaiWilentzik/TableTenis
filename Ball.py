@@ -9,63 +9,71 @@ class Ball:
         self.right_counter = 0
         self.direction = -1
 
+    # add new coordinates of ball in new frame
     def set_coordinates(self, x, y):
         if len(self.positions) >= 30:
             self.positions.pop(0)
-        self.positions.append((x, y, False))
+        self.positions.append(Position(x, y))
         self.bounce_horizontal()
 
     def get_positions(self):
         return self.positions
 
     def get_x(self):
-        return self.positions[-1][0]
+        return self.positions[-1].x
 
     def get_y(self):
-        return self.positions[-1][1]
+        return self.positions[-1].y
 
-    ### if the ball went right or left
     def bounce_horizontal(self):
         if len(self.positions) > 2:
+
             # check direction of last 2 frames
-            d_last = self.positions[-1][Constants.X_COORDINATE] - self.positions[-2][Constants.X_COORDINATE]
-            if d_last < 0:
-                if self.direction == Constants.RIGHT:
-                    self.positions[-2] = self.positions[-2][0], self.positions[-2][1], self.positions[-2][2], True
-                self.direction = Constants.LEFT
-            elif d_last > 0:
-                if self.direction == Constants.LEFT:
-                    self.positions[-2] = self.positions[-2][0], self.positions[-2][1], self.positions[-2][2], True
-                self.direction = Constants.RIGHT
-        # if len(self.positions) < 6:
-        #     return
-        # # check direction of last 2 frames
-        # d_last = self.positions[-1][Constants.X_COORDINATE] - self.positions[-2][Constants.X_COORDINATE]
-        # # check direction of the previous last 2 frames
-        # d_prev_last = self.positions[-2][Constants.X_COORDINATE] - self.positions[-3][Constants.X_COORDINATE]
-        #
-        # if d_last > 0 > d_prev_last or d_last < 0 < d_prev_last:
-        #     self.positions[-2][Constants.IS_BOUNCE_HORIZONTAL] = True
-        #     return
-        #
-        # # check if there is no change in x coordinate in d_prev_last
-        # if d_prev_last == 0:
-        #     # check direction of the previousX4 last 2 frames
-        #     d_prevX4_last = self.positions[-5][Constants.X_COORDINATE] - self.positions[-6][Constants.X_COORDINATE]
-        #
-        #     if d_last > 0 > d_prevX4_last or d_last < 0 < d_prevX4_last:
-        #         self.positions[-2] = self.positions[-2][0], self.positions[-2][1], self.positions[-2][2], True
-        #         return
+            d_last = self.positions[-1].x - self.positions[-2].x
+            if d_last < 0:  #  if direction is left
+                if self.direction == Constants.RIGHT:  # if direction was right
+                    self.positions[-2].set_horizontal()  # mark as change of directions
+                self.direction = Constants.LEFT  # set the direction to left
+            elif d_last > 0:  #  if direction is right
+                if self.direction == Constants.LEFT:  # if direction was left
+                    self.positions[-2].set_horizontal()  # mark as change of directions
+                self.direction = Constants.RIGHT  # set the direction to right
 
     def bounce_vertical(self, table):
         if len(self.positions) < 3:
             return
-        # y1table < posList[-2][1] < y2table:
-        if (self.positions[-1][1] < self.positions[-2][1] and self.positions[-2][1] > self.positions[-3][1] and
-                table.get_bottom_right()[Constants.X_COORDINATE] > self.positions[-2][0] >
-                table.get_top_left()[Constants.X_COORDINATE] and
-                (table.get_top_left()[Constants.Y_COORDINATE] - Constants.EPSILON) < self.positions[-2][1] <
-                table.get_bottom_right()[Constants.Y_COORDINATE]):
-            self.positions[-2] = (self.positions[-2][0], self.positions[-2][1], True)
+
+        # second last position is minimum (y value) of it's neighbors
+        min_position = self.positions[-1].y < self.positions[-2].y and self.positions[-3].y < self.positions[-2].y
+
+        #  checks if the x coordinates is in the table area
+        x_in_table = table.get_bottom_right()[Constants.X_COORDINATE] > self.positions[-2][0] > table.get_top_left()[
+            Constants.X_COORDINATE]
+
+        #  checks that the second last position is on the table (y coordinates only)
+        y_on_table = (table.get_top_left()[Constants.Y_COORDINATE] - Constants.EPSILON) < self.positions[-2].y < \
+                     table.get_bottom_right()[Constants.Y_COORDINATE]
+
+        if min_position and y_on_table and x_in_table:  # if the ball hits the table
+            self.positions[-2].set_vertical()  # set the position to indicate vertical change
 
 
+# position of ball at each frame
+class Position:
+    def __init__(self, x, y):
+        self.x = int(x)
+        self.y = int(y)
+        self.vertical = False
+        self.horizontal = False
+
+    def set_horizontal(self):
+        self.horizontal = True
+
+    def set_vertical(self):
+        self.vertical = True
+
+    def get_vertical(self):
+        return self.vertical
+
+    def get_horizontal(self):
+        return self.horizontal
