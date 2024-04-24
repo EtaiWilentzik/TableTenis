@@ -1,3 +1,5 @@
+import Constants
+
 
 class Table:
     def __init__(self):
@@ -52,10 +54,11 @@ class Table:
         self.set_bottom_right((self.list[2], self.list[3]))
 
     def set_coordinates_net(self):
-        for i in range(len(self.list)):
-            self.netlist[i] = int(self.netlist[i] / self.counter_net)
+        for i in range(len(self.netlist)):
+            self.netlist[i] //= self.counter_net
         self.set_top_net((self.netlist[0], self.netlist[1]))
         self.set_bottom_net((self.netlist[2], self.netlist[3]))
+        Constants.NET_X = self.netlist[0]  # add constant of x coordinate of net
 
     def set_two_sides(self):
         # declare the left side of the table

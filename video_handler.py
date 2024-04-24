@@ -9,7 +9,7 @@ class VideoHandler:
     def __init__(self):
         self.VIDEOS_DIR = os.path.join('.', 'videos')
 
-        self.video_path = os.path.join(self.VIDEOS_DIR, 'v1_short.mp4')  # get the video from the folder
+        self.video_path = os.path.join(self.VIDEOS_DIR, 'v2.mp4')  # get the video from the folder
         self.video_path_out = '{}_out.mp4'.format(self.video_path)  # create ending name for output file
 
         self.cap = cv2.VideoCapture(self.video_path)  # input source for cv2 library
@@ -28,6 +28,7 @@ class VideoHandler:
                       (int(game.table.right_table[2]), int(game.table.right_table[3])), Constants.LIGHT_BLUE, 4)
         self.out.write(self.frame)
 
+
     def read_next_frame(self):
         # print(f"Elapsed time: {elapsed_time_ms} milliseconds")
         self.ret, self.frame = self.cap.read()
@@ -40,7 +41,7 @@ class VideoHandler:
     def paint_ball_movement(self, game):
         tmp_positions = game.ball.get_positions()
         for i, pos in enumerate(tmp_positions):
-            if pos.get_vertical():
+            if pos.is_vertical():
                 cv2.circle(self.frame, (pos.x, pos.y), 15, (0, 0, 255), cv2.FILLED)
             else:
                 cv2.circle(self.frame, (pos.x, pos.y), 5, (0, 255, 0), cv2.FILLED)
@@ -48,7 +49,10 @@ class VideoHandler:
             if i != 0:
                 cv2.line(self.frame, (pos.x, pos.y), (tmp_positions[i - 1].x, tmp_positions[i - 1].y), (0, 0, 255),
                          2)
-
+    def paint_all(self, x1, y1, x2, y2):
+        cv2.rectangle(self.frame, (int(x1), int(y1)), (int(x2), int(y2)), Constants.GREEN, 4)
+        # cv2.putText(self.frame, results.names[int(class_id)].upper(), (int(x1), int(y1 - 10)),
+        #             cv2.FONT_HERSHEY_SIMPLEX, 1.3, Constants.GREEN, 3, cv2.LINE_AA, )
     def release(self):
         self.cap.release()
         self.out.release()

@@ -23,8 +23,7 @@ class Constants:
     X_COORDINATE = 0
     Y_COORDINATE = 1
 
-    EPSILON = 100
-
+    EPSILON = 40
 
     LAST = -1
 
@@ -36,8 +35,8 @@ class Constants:
     GREEN = (0, 255, 0)
     RED = (0, 0, 255)
     BLUE = (255, 0, 0)
-    LIGHT_BLUE=(255,255,0)
-    GREY=(128,128,128)
+    LIGHT_BLUE = (255, 255, 0)
+    GREY = (128, 128, 128)
 
     TABLE_ID = 2
     NET_ID = 1
@@ -45,5 +44,4 @@ class Constants:
 
     THRESHOLD = 0.5  # threshold of accuracy of classification
 
-
-
+    NET_X = 0

@@ -8,6 +8,7 @@ class Ball:
         self.left_counter = 0
         self.right_counter = 0
         self.direction = -1
+        self.net_x = 0
 
     # add new coordinates of ball in new frame
     def set_coordinates(self, x, y):
@@ -15,6 +16,14 @@ class Ball:
             self.positions.pop(0)
         self.positions.append(Position(x, y))
         self.bounce_horizontal()
+
+    def set_side_of_table(self):
+        if len(self.positions) > 0:
+            # check side of ball
+            if self.positions[-1].x > self.net_x:
+                self.left_counter = 0
+            else:
+                self.right_counter = 0
 
     def get_positions(self):
         return self.positions
@@ -72,7 +81,7 @@ class Position:
     def set_vertical(self):
         self.vertical = True
 
-    def get_vertical(self):
+    def is_vertical(self):
         return self.vertical
 
     def get_horizontal(self):

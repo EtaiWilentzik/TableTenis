@@ -51,10 +51,7 @@ while video_handler.get_ret():  # until no more frames
                 #                 cv2.FONT_HERSHEY_SIMPLEX, 1.3, Constants.GREEN, 3, cv2.LINE_AA, )
                 # top left is first, bottom right is second, color is third, and thickness is the last
 
-            # cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), Constants.GREEN, 4)
-            # cv2.putText(frame, results.names[int(class_id)].upper(), (int(x1), int(y1 - 10)),
-            #             cv2.FONT_HERSHEY_SIMPLEX, 1.3, Constants.GREEN, 3, cv2.LINE_AA, )
-
+            video_handler.paint_all(left_x, top_y, right_x, bottom_y)
             game.test_frame(video_handler.get_frame())  # checks if there was a bounce and determine the rest of the
 
             ################################ painting ###########################################
