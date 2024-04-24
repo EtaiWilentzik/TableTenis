@@ -25,6 +25,7 @@ class Constants:
 
     EPSILON = 100
 
+
     LAST = -1
 
     IS_BOUNCE_VERTICAL = 2
@@ -33,4 +34,9 @@ class Constants:
     FPS = 30
 
     GREEN = (0, 255, 0)
+    RED = (0, 0, 255)
+    BLUE = (255, 0, 0)
+    LIGHT_BLUE=(255,255,0)
+    GREY=(128,128,128)
+
 

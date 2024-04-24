@@ -5,7 +5,9 @@ class Ball:
     def __init__(self):
         # list of (x, y, is_bounce_vertical, is_bounce_horizontal)
         self.positions = []
-        self.direction = 0
+        self.left_counter = 0
+        self.right_counter = 0
+        self.direction = -1
 
     def set_coordinates(self, x, y):
         if len(self.positions) >= 30:
@@ -22,8 +24,8 @@ class Ball:
     def get_y(self):
         return self.positions[-1][1]
 
+    ### if the ball went right or left
     def bounce_horizontal(self):
-
         if len(self.positions) > 2:
             # check direction of last 2 frames
             d_last = self.positions[-1][Constants.X_COORDINATE] - self.positions[-2][Constants.X_COORDINATE]
@@ -35,7 +37,6 @@ class Ball:
                 if self.direction == Constants.LEFT:
                     self.positions[-2] = self.positions[-2][0], self.positions[-2][1], self.positions[-2][2], True
                 self.direction = Constants.RIGHT
-
         # if len(self.positions) < 6:
         #     return
         # # check direction of last 2 frames
@@ -66,3 +67,5 @@ class Ball:
                 (table.get_top_left()[Constants.Y_COORDINATE] - Constants.EPSILON) < self.positions[-2][1] <
                 table.get_bottom_right()[Constants.Y_COORDINATE]):
             self.positions[-2] = (self.positions[-2][0], self.positions[-2][1], True)
+
+
