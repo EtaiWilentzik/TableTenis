@@ -1,5 +1,3 @@
-from Constants import Constants
-
 
 class Table:
     def __init__(self):
@@ -79,7 +77,7 @@ class Table:
         self.counter_net += 1
         # if self.counter_net == 2 * Constants.FPS:
 
-    def set_table_dimensions(self):
-        self.set_coordinates_table()
-        self.set_coordinates_net()
-        self.set_two_sides()
+    # def set_table_dimensions(self):
+    #     self.set_coordinates_table()
+    #     self.set_coordinates_net()
+    #     self.set_two_sides()

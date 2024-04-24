@@ -39,4 +39,11 @@ class Constants:
     LIGHT_BLUE=(255,255,0)
     GREY=(128,128,128)
 
+    TABLE_ID = 2
+    NET_ID = 1
+    Ball_ID = 0
+
+    THRESHOLD = 0.5  # threshold of accuracy of classification
+
+
 
