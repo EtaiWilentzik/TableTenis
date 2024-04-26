@@ -2,14 +2,14 @@ import os
 
 import cv2
 
-from Constants import Constants
+from Constants import *
 
 
 class VideoHandler:
     def __init__(self):
         self.VIDEOS_DIR = os.path.join('.', 'videos')
 
-        self.video_path = os.path.join(self.VIDEOS_DIR, 'v1_short.mp4')  # get the video from the folder
+        self.video_path = os.path.join(self.VIDEOS_DIR, 'v10.mp4')  # get the video from the folder
         self.video_path_out = '{}_out.mp4'.format(self.video_path)  # create ending name for output file
 
         self.cap = cv2.VideoCapture(self.video_path)  # input source for cv2 library
@@ -24,9 +24,9 @@ class VideoHandler:
 
     def paint_two_sides(self, game):
         cv2.rectangle(self.frame, (int(game.table.left_table[0]), int(game.table.left_table[1])),
-                      (int(game.table.left_table[2]), int(game.table.left_table[3])), Constants.RED, 4)
+                      (int(game.table.left_table[2]), int(game.table.left_table[3])), Color.RED, 4)
         cv2.rectangle(self.frame, (int(game.table.right_table[0]), int(game.table.right_table[1])),
-                      (int(game.table.right_table[2]), int(game.table.right_table[3])), Constants.LIGHT_BLUE, 4)
+                      (int(game.table.right_table[2]), int(game.table.right_table[3])), Color.AQUA, 4)
         self.out.write(self.frame)
 
     def read_next_frame(self):
@@ -48,11 +48,11 @@ class VideoHandler:
                 cv2.circle(self.frame, (pos.x, pos.y), 5, (0, 255, 0), cv2.FILLED)
                 # draw line between each frame.
             if i != 0:
-                cv2.line(self.frame, (pos.x, pos.y), (tmp_positions[i - 1].x, tmp_positions[i - 1].y), Constants.BLACK,
+                cv2.line(self.frame, (pos.x, pos.y), (tmp_positions[i - 1].x, tmp_positions[i - 1].y), Color.BLACK,
                          2)
 
-    # def paint_all(self, x1, y1, x2, y2):
-    #     cv2.rectangle(self.frame, (int(x1), int(y1)), (int(x2), int(y2)), Constants.GREEN, 4)
+    def paint_all(self, x1, y1, x2, y2):
+        cv2.rectangle(self.frame, (int(x1), int(y1)), (int(x2), int(y2)), Color.GREEN, 4)
     # cv2.putText(self.frame, results.names[int(class_id)].upper(), (int(x1), int(y1 - 10)),
     #             cv2.FONT_HERSHEY_SIMPLEX, 1.3, Constants.GREEN, 3, cv2.LINE_AA, )
     def release(self):

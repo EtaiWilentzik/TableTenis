@@ -5,8 +5,8 @@ from Table import Table
 from Game import Game
 from Constants import Constants
 from video_handler import VideoHandler
-#this remove the printing in the cli
-os.environ['YOLO_VERBOSE'] = 'False'
+
+
 # in the screen - (0, 0) is top left corner
 
 video_handler = VideoHandler()
@@ -53,9 +53,10 @@ while video_handler.get_ret():  # until no more frames
                 #                 cv2.FONT_HERSHEY_SIMPLEX, 1.3, Constants.GREEN, 3, cv2.LINE_AA, )
                 # top left is first, bottom right is second, color is third, and thickness is the last
 
-            # video_handler.paint_all(left_x, top_y, right_x, bottom_y)
-                #moved it here under the if of the ball because  all the test in test_frame are only when i deteacte ball.
+
+            #moved it here under the if of the ball because  all the test in test_frame are only when i deteacte ball.
                 game.test_frame(video_handler.get_frame(),counterUntilFrame)  # checks if there was a bounce and determine the rest of the
+            video_handler.paint_all(left_x, top_y, right_x, bottom_y)
 
             ################################ painting ###########################################
 
