@@ -56,7 +56,7 @@ while video_handler.get_ret():  # until no more frames
 
             #moved it here under the if of the ball because  all the test in test_frame are only when i deteacte ball.
                 game.test_frame(video_handler.get_frame(),counterUntilFrame)  # checks if there was a bounce and determine the rest of the
-            video_handler.paint_all(left_x, top_y, right_x, bottom_y)
+            # video_handler.paint_all(left_x, top_y, right_x, bottom_y)
 
             ################################ painting ###########################################
 

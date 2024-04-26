@@ -54,7 +54,7 @@ class Ball:
         if len(self.positions) < 3:
             return
 
-        # second last position is minimum (y value) of it's neighbors
+        # second last position is minimum (y value) of it's neighbors. we need it because if the ball still in the area in the next frame we dont want to count it as two bounces
         min_position = self.positions[-1].y < self.positions[-2].y and self.positions[-3].y < self.positions[-2].y
 
         #  checks if the x coordinates is in the table area

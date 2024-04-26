@@ -2,7 +2,7 @@ import cv2
 
 from Constants import *
 
-
+# aaa
 class Game:
     def __init__(self, ball, table):
         self.min_height = 0  #put zeero becuase its the maximum i.e the top of the frame
@@ -67,11 +67,15 @@ class Game:
                 #                 cv2.FONT_HERSHEY_SIMPLEX, 1.0, Color.RED, 2, cv2.LINE_AA, )
 
     def hit_table_point(self, frame):
+        #dont think we need it
         if len(self.ball.positions) < 3:
             return
         #this purpule line is where we put the min height param.
         cv2.line(frame, (int(self.min_height), int(self.min_height)),
                  (int(self.min_height) + 500, int(self.min_height)), Color.PURPLE, 2)
+        cv2.putText(frame, f" min height is {self.min_height}", (int(self.min_height-10),int(self.min_height-10)), cv2.FONT_HERSHEY_SIMPLEX,
+                    1.0, Color.AQUA, 5, cv2.LINE_AA, )
+
         if self.ball.get_y() > self.min_height:
 
             if self.ball.left_counter > 0:  # that mean that the last frame the ball is very low  we assume the other player cant touch it.
@@ -82,6 +86,28 @@ class Game:
                 cv2.putText(frame, f" player left won in hit table point", (int(300), int(700)),  cv2.FONT_HERSHEY_SIMPLEX,
                             1.0, Color.MAGENTA, 5, cv2.LINE_AA, )
 
+    def hit_floor_first(self, frame):
+        #dont think we need it
+        if len(self.ball.positions) < 3:
+            return
+
+        if self.ball.get_y() > self.min_height:
+            # checks if x coordinate is in the left table
+            left_table_x = self.table.left_table[2] > self.ball.positions[-2].x > self.table.left_table[0]
+            right_table_x = self.table.right_table[2] > self.ball.positions[-2].x > self.table.right_table[0]
+            if self.ball.left_counter == 0 and left_table_x:  # meaning that the x is in the table area and there is
+                # no hitiing in the left area the conclusion is that the right player miss
+
+                cv2.putText(frame, f" player left won  in hit floor point {self.ball.get_y()}", (int(130), int(150)),  cv2.FONT_HERSHEY_SIMPLEX,
+                            1.0, Color.ORANGE, 5, cv2.LINE_AA, )
+                print(f"player right won in hit floor point {self.ball.get_y()}")
+            elif self.ball.right_counter == 0 and right_table_x:# meaning that the x is in the table area and there is
+                # no hitiing in the right area the conclusion is that the left player miss
+
+                cv2.putText(frame, f" player right won in hit floor point {self.ball.get_y()}", (int(600), int(700)),  cv2.FONT_HERSHEY_SIMPLEX,
+                            1.0, Color.ORANGE, 5, cv2.LINE_AA, )
+                print(f"player left won in hit floor point {self.ball.get_y()}")
+
     def set_game_constants(self):
         self.table.set_coordinates_table()
         self.table.set_coordinates_net()
@@ -89,16 +115,18 @@ class Game:
         self.ball.net_x = self.table.netlist[0]
         # this is the minimum value that we expect someone to hit the ball. i.e lower than this is a point to the
         # opponent.
-        self.min_height = (self.table.list[1] + 2 * self.table.list[3]) / 3  # avrage
+        # we need to think about good min height because its very important attrubute
+        self.min_height = (4 *self.table.list[1] +  self.table.list[3]) / 5  # avrage
 
     def test_frame(self, frame, counter):
         self.ball.set_side_of_table()
         self.hit_table_point(frame)
+        self.hit_floor_first(frame)
         #i think this function need to called last  because only here i change the left and right counting but im not sure about it yet.
         self.double_bounce(frame, counter)
+
         # need to create here function that checks if the ball hit the table and now he is lower than something we can say its a point to the other side
-        #todo: create function that checks if the ball does not hit the table when hitting the floor first.
-        #todo: somhow to check if the player touch the ball before its hits the table.
+        #todo: somehow to check if the player touch the ball before its hits the table.
         #todo: identify if its a server or not
         #todo: identify when point is ending
         #todo: maybe to use threads on each function that being called in test_frame
