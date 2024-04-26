@@ -22,8 +22,10 @@ class Ball:
             # check side of ball
             if self.positions[-1].x > self.net_x:
                 self.left_counter = 0
+
             else:
                 self.right_counter = 0
+
 
     def get_positions(self):
         return self.positions

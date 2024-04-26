@@ -23,7 +23,7 @@ class Game:
     # def set_table(self, new_table):
     #     self.table = new_table
 
-    def bounce(self, frame):
+    def bounce(self, frame,counter):
         if len(self.ball.positions) < 3:
             return
 
@@ -42,8 +42,7 @@ class Game:
                 self.ball.left_counter += 1  # ball hits left table one more time
                 if self.ball.left_counter > 1:  # ball hits twice in the same table - means losing the game
                     #need to think what to do here. for now we will print it on the screen.
-                    print("player right won")
-                    cv2.putText(frame, " player right won", (int(100), int(500)),
+                    cv2.putText(frame, f" player right won and the counter is {counter}", (int(100), int(500)),
                                 cv2.FONT_HERSHEY_SIMPLEX, 1.3, Constants.BLUE, 12, cv2.LINE_AA, )
 
             # checks if x coordinate is in the right table
@@ -58,8 +57,8 @@ class Game:
                 self.ball.right_counter += 1  # ball hits right table one more time
                 if self.ball.right_counter > 1:  # ball hits twice in the same table - means losing the game
                     # need to think what to do here. for now we will print it on the screen.
-                    print("player left won")
-                    cv2.putText(frame, " player left won", (int(400), int(800)),
+
+                    cv2.putText(frame, f" player left won and the counter is {counter}", (int(800), int(800)),
                                 cv2.FONT_HERSHEY_SIMPLEX, 1.3, Constants.RED, 12, cv2.LINE_AA, )
 
     def set_game_constants(self):
@@ -67,12 +66,14 @@ class Game:
         self.table.set_coordinates_net()
         self.table.set_two_sides()
         self.ball.net_x = self.table.netlist[0]
-        #this is the minimum value that we expect someone to hit the ball. i.e lower than this is a point to the opponent.
+        # this is the minimum value that we expect someone to hit the ball. i.e lower than this is a point to the
+        # opponent.
         self.min_height = (self.table.list[1] + 2 * self.table.list[3]) / 3  # avrage
 
-    def test_frame(self, frame):
-        self.bounce(frame)
-        self.ball.set_side_of_table()
+    def test_frame(self, frame,counter):
+
+        self.ball.set_side_of_table(counter)
+        self.bounce(frame,counter)
 
 
 

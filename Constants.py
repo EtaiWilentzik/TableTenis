@@ -1,4 +1,5 @@
 class Constants:
+
     SERVE_LEFT = 0
     HIT_LEFT_TABLE_AFTER_SERVE = 1
 
@@ -37,6 +38,9 @@ class Constants:
     BLUE = (255, 0, 0)
     LIGHT_BLUE = (255, 255, 0)
     GREY = (128, 128, 128)
+    BLACK = (0, 0, 0)
+    PURPLE = (128, 0, 128)
+    MAGENTA = (255, 0, 255)#KIND OF PINK
 
     TABLE_ID = 2
     NET_ID = 1
