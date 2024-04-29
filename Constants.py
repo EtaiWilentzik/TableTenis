@@ -1,4 +1,5 @@
 class Constants:
+    counterUntilFrame = 0  # count up until table is fixed
     SERVE_LEFT = 0
     HIT_LEFT_TABLE_AFTER_SERVE = 1
     SERVE_RIGHT = 2
@@ -23,10 +24,17 @@ class Constants:
     TABLE_ID = 2
     NET_ID = 1
     Ball_ID = 0
-
+    L_RESULT=0
+    R_RESULT=0
     THRESHOLD = 0.5  # threshold of accuracy of classification
 
     NET_X = 0
+
+class Dimensions:
+    TABLE_WIDTH = 152.5
+    TABLE_HEIGHT = 76
+    TABLE_HALF_LENGTH = 137 #ALL THABLE LNETGH IS 137*2
+
 
 class Color:
     BLACK = (0, 0, 0)

@@ -1,4 +1,6 @@
-from Constants import Constants
+import math
+
+from Constants import *
 
 
 class Ball:
@@ -9,6 +11,8 @@ class Ball:
         self.right_counter = 0
         self.direction = -1
         self.net_x = 0
+        self.speed = 0
+        self.speeds = []  #maybe we will use it for statstics or max speed of interval something like that
 
     # add new coordinates of ball in new frame
     def set_coordinates(self, x, y):
@@ -16,6 +20,20 @@ class Ball:
             self.positions.pop(0)
         self.positions.append(Position(x, y))
         self.bounce_horizontal()
+
+    def set_speed(self):
+        if len(self.positions) < 2:
+            return
+
+        time_interval = 1 / Constants.FPS  # Time between frames
+        distance = math.sqrt(
+            (self.positions[-1].x - self.positions[-2].x) ** 2 + (self.positions[-1].y - self.positions[-2].y) ** 2)
+        self.speed = distance / time_interval
+        self.speeds.append(self.speed)
+
+
+
+
 
     def set_side_of_table(self):
         if len(self.positions) > 0:
@@ -25,7 +43,6 @@ class Ball:
 
             else:
                 self.right_counter = 0
-
 
     def get_positions(self):
         return self.positions
