@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Constants:
     counterUntilFrame = 0  # count up until table is fixed
     SERVE_LEFT = 0
@@ -24,48 +27,48 @@ class Constants:
     TABLE_ID = 2
     NET_ID = 1
     Ball_ID = 0
-    L_RESULT=0
-    R_RESULT=0
+    L_RESULT = 0
+    R_RESULT = 0
     THRESHOLD = 0.5  # threshold of accuracy of classification
 
     NET_X = 0
 
+
 class Dimensions:
     TABLE_WIDTH = 152.5
     TABLE_HEIGHT = 76
-    TABLE_HALF_LENGTH = 137 #ALL THABLE LNETGH IS 137*2
+    TABLE_HALF_LENGTH = 137  #ALL THABLE LNETGH IS 137*2
 
 
+
+# colors defined in BGR format: this is how open cv work with colors
 class Color:
     BLACK = (0, 0, 0)
-    RED = (255, 0, 0)
+    RED = (0, 0, 255)
     GREEN = (0, 255, 0)
-    BLUE = (0, 0, 255)
+    BLUE = (255, 0, 0)
     PURPLE = (128, 0, 128)
     MAGENTA = (255, 0, 255)
-    YELLOW = (255, 255, 0)
+    YELLOW = (0, 255, 255)
     WHITE = (255, 255, 255)
-    PINK = (255, 0, 255)
-    AQUA = (0, 255, 255)
-    ORANGE = (255, 165, 0)
-    BROWN = (165, 42, 42)
-    MAROON = (128, 0, 0)
-    TEAL = (0, 128, 128)
-    NAVY = (0, 0, 128)
-    OLIVE = (128, 128, 0)
+    PINK = (203, 192, 255)  # Adjusted to a lighter shade of pink
+    AQUA = (255, 255, 0)
+    ORANGE = (0, 165, 255)
+    BROWN = (42, 42, 165)
+    MAROON = (0, 0, 128)
+    TEAL = (128, 128, 0)
+    NAVY = (128, 0, 0)
+    OLIVE = (0, 128, 128)
     LIME = (0, 255, 0)
-    CYAN = (0, 255, 255)
+    CYAN = (255, 255, 0)
     SILVER = (192, 192, 192)
     GRAY = (128, 128, 128)
     DARK_GRAY = (64, 64, 64)
     LIGHT_GRAY = (192, 192, 192)
-    GOLD = (255, 215, 0)
-    SALMON = (250, 128, 114)
-    TURQUOISE = (64, 224, 208)
-    INDIGO = (75, 0, 130)
-    STEEL_BLUE = (70, 130, 180)
-    TAN = (210, 180, 140)
+    GOLD = (0, 215, 255)
+    SALMON = (114, 128, 250)
+    TURQUOISE = (208, 224, 64)
+    INDIGO = (130, 0, 75)
+    STEEL_BLUE = (180, 130, 70)
+    TAN = (140, 180, 210)
     VIOLET = (238, 130, 238)
-
-
-

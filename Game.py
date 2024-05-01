@@ -1,12 +1,15 @@
 import cv2
 from Constants import *
 from video_handler import VideoHandler
+
+
 # aaa
 class Game:
     def __init__(self, ball, table):
         self.min_height = 0  #put zeero becuase its the maximum i.e the top of the frame
         self.ball = ball
         self.table = table
+
     # def get_ball(self):
     #     return self.ball
     #
@@ -35,13 +38,14 @@ class Game:
 
             if left_table_x and left_on_table_y:  # if ball hits left table
                 self.ball.positions[-2].set_vertical()  # indicates ball hits table
-                self.ball.left_counter += 1  # ball hits left table one more time
+                self.ball.add_hit((self.ball.positions[-2].x,self.ball.positions[-2].y))     #we only need the x value to draw it in the table. we use it as a list of all the points that hit the table.
 
+                self.ball.left_counter += 1  # ball hits left table one more time
 
                 if self.ball.left_counter > 1:  # ball hits twice in the same table - means losing the game
                     cv2.putText(frame, f" player right won and the counter is {counter}", (int(100), int(500)),
                                 cv2.FONT_HERSHEY_SIMPLEX, 1.0, Color.BLUE, 3, cv2.LINE_AA, )
-                    Constants.R_RESULT+=1
+                    Constants.R_RESULT += 1
             # checks if x coordinate is in the right table
             right_table_x = self.table.right_table[2] > self.ball.positions[-2].x > self.table.right_table[0]
             # checks if y coordinate is the same as height of the table
@@ -49,12 +53,14 @@ class Game:
                                self.table.right_table[3]
             if right_table_x and right_on_table_y:  # if ball hits right table
                 self.ball.positions[-2].set_vertical()  # indicates ball hits table
+                self.ball.add_hit((self.ball.positions[-2].x, self.ball.positions[-2].y)) #we only need the x value to draw it in the table. we use it as a list of all the points that hit the table.
                 self.ball.right_counter += 1  # ball hits right table one more time
                 if self.ball.right_counter > 1:  # ball hits twice in the same table - means losing the game
 
                     cv2.putText(frame, f" player left won and the counter is {counter}", (int(800), int(800)),
                                 cv2.FONT_HERSHEY_SIMPLEX, 1.0, Color.RED, 2, cv2.LINE_AA, )
-                    Constants.L_RESULT+=1
+                    Constants.L_RESULT += 1
+
     def hit_table_point(self, frame):
         #dont think we need it
         if len(self.ball.positions) < 3:
@@ -74,13 +80,13 @@ class Game:
                             cv2.FONT_HERSHEY_SIMPLEX,
                             1.0, Color.MAGENTA, 5, cv2.LINE_AA, )
                 #adding 1 to the right player
-                Constants.R_RESULT+=1
+                Constants.R_RESULT += 1
             elif self.ball.right_counter > 0:
                 cv2.putText(frame, f" player left won in hit table point", (int(300), int(700)),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             1.0, Color.MAGENTA, 5, cv2.LINE_AA, )
                 #adding 1 to the left player
-                Constants.L_RESULT+=1
+                Constants.L_RESULT += 1
 
     def hit_floor_first(self, frame):
         #dont think we need it
@@ -97,7 +103,7 @@ class Game:
                 cv2.putText(frame, f" player left won  in hit floor point {self.ball.get_y()}", (int(130), int(150)),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             1.0, Color.ORANGE, 5, cv2.LINE_AA, )
-                Constants.L_RESULT+=1
+                Constants.L_RESULT += 1
                 print(f"player left won in hit floor point {self.ball.get_y()}")
             elif self.ball.right_counter == 0 and right_table_x:  # meaning that the x is in the table area and there is
                 # no hitiing in the right area the conclusion is that the left player miss
@@ -105,8 +111,9 @@ class Game:
                 cv2.putText(frame, f" player right won in hit floor point {self.ball.get_y()}", (int(600), int(700)),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             1.0, Color.ORANGE, 5, cv2.LINE_AA, )
-                Constants.R_RESULT+=1
+                Constants.R_RESULT += 1
                 print(f"player right won in hit floor point {self.ball.get_y()}")
+
     def set_game_constants(self):
         self.table.set_coordinates_table()
         self.table.set_coordinates_net()
@@ -116,6 +123,7 @@ class Game:
         # opponent.
         # we need to think about good min height because its very important attrubute
         self.min_height = (4 * self.table.list[1] + self.table.list[3]) / 5  # avrage
+
     # Purple in BGR
     def test_frame(self, frame, counter):
         self.ball.set_side_of_table()

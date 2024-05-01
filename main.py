@@ -12,7 +12,7 @@ model = YOLO("yolov8n.yaml")  # build a new model from scratch
 # model = YOLO('yolov8n.pt')
 #
 # # Use the model batch=-1 best results
-model.train(data="config.yaml", epochs=800)  # train the model
+model.train(data="config.yaml", epochs=1)  # train the model
 
 
 
