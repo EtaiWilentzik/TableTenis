@@ -1,8 +1,7 @@
 import math
-
 from Constants import *
-
-
+from video_handler import VideoHandler
+from formulas import calculate_linear_distance
 class Ball:
     def __init__(self):
         # list of (x, y, is_bounce_vertical, is_bounce_horizontal)
@@ -12,7 +11,6 @@ class Ball:
         self.right_counter = 0
         self.direction = -1
         self.net_x = 0
-        self.speed = 0
         self.speeds = []  #maybe we will use it for statstics or max speed of interval something like that
 
     # add new coordinates of ball in new frame
@@ -20,17 +18,22 @@ class Ball:
         if len(self.positions) >= 30:
             self.positions.pop(0)
         self.positions.append(Position(x, y))
-        # self.bounce_horizontal()
 
     def set_speed(self):
-        if len(self.positions) < 2:
-            return
+        if Constants.counterUntilFrame % 30 == 0 and Constants.counterUntilFrame > 2 * Constants.FPS:
+            if len(self.positions) < 2:
+                return
 
-        time_interval = 1 / Constants.FPS  # Time between frames
-        distance = math.sqrt(
-            (self.positions[-1].x - self.positions[-2].x) ** 2 + (self.positions[-1].y - self.positions[-2].y) ** 2)
-        self.speed = distance / time_interval
-        self.speeds.append(self.speed)
+            speed = (274 / Constants.TABLE_SIZE) * calculate_linear_distance((self.positions[-1].x, self.positions[-1].y),
+                                                                             (self.positions[-2].x, self.positions[-2].y))
+            speed *= Constants.FPS
+            speed *= 0.036
+            speed /= 1000
+            # time_interval = 1 / Constants.FPS  # Time between frames
+            # distance = math.sqrt(
+            #     (self.positions[-1].x - self.positions[-2].x) ** 2 + (self.positions[-1].y - self.positions[-2].y) ** 2)
+            # speed = distance / time_interval
+            self.speeds.append(int(speed))
 
     def set_side_of_table(self):
         if len(self.positions) > 0:

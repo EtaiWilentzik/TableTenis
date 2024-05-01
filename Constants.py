@@ -30,6 +30,7 @@ class Constants:
     L_RESULT = 0
     R_RESULT = 0
     THRESHOLD = 0.5  # threshold of accuracy of classification
+    TABLE_SIZE = 1
 
     NET_X = 0
 

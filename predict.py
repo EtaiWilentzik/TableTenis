@@ -10,7 +10,7 @@ from mini_court import MiniCourt
 # in the screen - (0, 0) is top left corner
 
 video_handler = VideoHandler()
-#create minicourt draw
+# create mini_court draw
 mini_court = MiniCourt(VideoHandler.frame)
 model_path = os.path.join('.', 'train8', 'weights', 'last.pt')  # get the training set
 model = YOLO(model_path)  # load a custom model
@@ -39,7 +39,7 @@ while video_handler.get_ret():  # until no more frames
             if class_id == Constants.Ball_ID:
                 game.ball.set_coordinates(xCenter, yCenter)  # adding new coordinates to the list
 
-                # game.ball.set_speed()
+                game.ball.set_speed()
                 # etai moved it here from the same indentation as the if classes conditions i.e. one after the if
                 # threshold.
                 video_handler.paint_ball_movement(game)
@@ -55,19 +55,18 @@ while video_handler.get_ret():  # until no more frames
                 # top left is first, bottom right is second, color is third, and thickness is the last
 
                 #moved it here under the if of the ball because  all the test in test_frame are only when i deteacte ball.
-                game.test_frame(video_handler.get_frame(),Constants.counterUntilFrame, )  # checks if there was a bounce and determine the rest of the
+                game.test_frame(video_handler.get_frame(),
+                                Constants.counterUntilFrame, )  # checks if there was a bounce and determine the rest of the
     if Constants.counterUntilFrame == 2 * Constants.FPS:  # setting the position of table after calculating avg of coordinates
-
         game.set_game_constants()
 
     # video_handler.draw_result()
     #this need to be last because at the end there is self.out.write(self.frame)
     video_handler.paint_two_sides(game)
-    video_handler.paint_ball_movement(game)
+    # video_handler.paint_ball_movement(game)
     #think this function must be last beacue we are changing the frame.
     # mini_court.draw_mini_court(VideoHandler.frame)
-    mini_court.draw_mini_court(VideoHandler.frame)
-    mini_court.draw_ball(game)
+    mini_court.draw_mini_court(VideoHandler.frame, game)
     video_handler.paint_frame_counter()
 
     # write the frame to the video this function must be last.

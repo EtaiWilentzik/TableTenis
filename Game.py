@@ -121,8 +121,10 @@ class Game:
         self.ball.net_x = self.table.netlist[0]
         # this is the minimum value that we expect someone to hit the ball. i.e lower than this is a point to the
         # opponent.
-        # we need to think about good min height because its very important attrubute
-        self.min_height = (4 * self.table.list[1] + self.table.list[3]) / 5  # avrage
+        # we need to think about good min height because its very important attribute
+        # self.min_height = (4 * self.table.list[1] + self.table.list[3]) / 5  # avrage
+        self.min_height = int((7 * self.table.list[1] + 3 * self.table.list[3]) / 10)
+
 
     # Purple in BGR
     def test_frame(self, frame, counter):
