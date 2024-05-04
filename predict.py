@@ -1,4 +1,5 @@
 import os
+import torch
 from ultralytics import YOLO
 from Ball import Ball
 from Table import Table
@@ -12,8 +13,15 @@ from mini_court import MiniCourt
 video_handler = VideoHandler()
 # create mini_court draw
 mini_court = MiniCourt(VideoHandler.frame)
-model_path = os.path.join('.', 'train8', 'weights', 'last.pt')  # get the training set
+model_path = os.path.join('.', 'train8', 'weights', 'best.pt')  # get the training set
+#use cuda if possible
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+print(f'Using device: {device}')
+#do it only for etai
+torch.cuda.set_device(0)
+
 model = YOLO(model_path)  # load a custom model
+model.to(device=device)
 game = Game(Ball(), Table())
 while video_handler.get_ret():  # until no more frames
 
@@ -68,6 +76,8 @@ while video_handler.get_ret():  # until no more frames
     # mini_court.draw_mini_court(VideoHandler.frame)
     mini_court.draw_mini_court(VideoHandler.frame, game)
     video_handler.paint_frame_counter()
+    #put this line in comment after finishing
+    video_handler.paint_all(left_x, top_y, right_x, bottom_y)
 
     # write the frame to the video this function must be last.
     video_handler.write_video()

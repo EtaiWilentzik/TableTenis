@@ -9,7 +9,7 @@ class VideoHandler:
 
     def __init__(self):
         self.VIDEOS_DIR = os.path.join('.', 'videos')
-        self.video_path = os.path.join(self.VIDEOS_DIR, 'v1.mp4')  # get the video from the folder
+        self.video_path = os.path.join(self.VIDEOS_DIR, 'v2.mp4')  # get the video from the folder
         self.video_path_out = '{}_out.mp4'.format(self.video_path)  # create ending name for output file
         self.cap = cv2.VideoCapture(self.video_path)  # input source for cv2 library
         self.ret, VideoHandler.frame = self.cap.read()  # ret - boolean (next frame exist), frame - encoding of current frame
