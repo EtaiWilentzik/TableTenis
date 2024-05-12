@@ -13,7 +13,7 @@ from mini_court import MiniCourt
 video_handler = VideoHandler()
 # create mini_court draw
 mini_court = MiniCourt(VideoHandler.frame)
-model_path = os.path.join('.', 'train8', 'weights', 'best.pt')  # get the training set
+model_path = os.path.join('.', 'train5', 'weights', 'best.pt')  # get the training set
 #use cuda if possible
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 print(f'Using device: {device}')
@@ -63,8 +63,8 @@ while video_handler.get_ret():  # until no more frames
                 # top left is first, bottom right is second, color is third, and thickness is the last
 
                 #moved it here under the if of the ball because  all the test in test_frame are only when i deteacte ball.
-                game.test_frame(video_handler.get_frame(),
-                                Constants.counterUntilFrame, )  # checks if there was a bounce and determine the rest of the
+                game.test_frame(video_handler.get_frame(),Constants.counterUntilFrame, )  # checks if there was a bounce and determine the rest of the
+        video_handler.paint_all(left_x, top_y, right_x, bottom_y,results.names[int(class_id)])
     if Constants.counterUntilFrame == 2 * Constants.FPS:  # setting the position of table after calculating avg of coordinates
         game.set_game_constants()
 
@@ -77,7 +77,7 @@ while video_handler.get_ret():  # until no more frames
     mini_court.draw_mini_court(VideoHandler.frame, game)
     video_handler.paint_frame_counter()
     #put this line in comment after finishing
-    video_handler.paint_all(left_x, top_y, right_x, bottom_y)
+
 
     # write the frame to the video this function must be last.
     video_handler.write_video()

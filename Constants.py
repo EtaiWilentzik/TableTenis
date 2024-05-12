@@ -24,9 +24,11 @@ class Constants:
     IS_BOUNCE_VERTICAL = 2
     IS_BOUNCE_HORIZONTAL = 3
     FPS = 30
-    TABLE_ID = 2
-    NET_ID = 1
+
+
     Ball_ID = 0
+    NET_ID = 1
+    TABLE_ID = 2
     L_RESULT = 0
     R_RESULT = 0
     THRESHOLD = 0.5  # threshold of accuracy of classification

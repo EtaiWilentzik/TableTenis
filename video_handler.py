@@ -51,9 +51,6 @@ class VideoHandler:
     def get_frame(self):
         return VideoHandler.frame
 
-    def get_ret(self):
-        return self.ret
-
     def paint_ball_movement(self, game):
         tmp_positions = game.ball.get_positions()
         for i, pos in enumerate(tmp_positions):
@@ -72,10 +69,15 @@ class VideoHandler:
             cv2.putText(self.frame, f"the speed is {game.ball.speeds[-1]}", (90, 90),
                         cv2.FONT_HERSHEY_SIMPLEX, 4, Color.CYAN, 3)
 
-    def paint_all(self, x1, y1, x2, y2):
-        cv2.rectangle(self.frame, (int(x1), int(y1)), (int(x2), int(y2)), Color.GREEN, 4)
-        # cv2.putText(self.frame, results.names[int(class_id)].upper(), (int(x1), int(y1 - 10)),
-        #             cv2.FONT_HERSHEY_SIMPLEX, 1.3, Constants.GREEN, 3, cv2.LINE_AA, )
+    def paint_all(self, x1, y1, x2, y2, result):
+        if result != "Hand_Racket" and result != "Net" and result != "Table":
+            if result == "Hand_Ball":
+                cv2.rectangle(self.frame, (int(x1), int(y1)), (int(x2), int(y2)), Color.ORANGE, 4)
+
+            else:
+                cv2.rectangle(self.frame, (int(x1), int(y1)), (int(x2), int(y2)), Color.GREEN, 4)
+            cv2.putText(self.frame, result, (int(x1), int(y1 - 10)),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.3, Color.GREEN, 3, cv2.LINE_AA, )
 
     #draw live result of the game
     def draw_result(self):
