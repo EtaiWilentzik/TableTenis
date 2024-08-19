@@ -7,7 +7,10 @@ from Constants import Constants
 from video_handler import VideoHandler
 from mini_court import MiniCourt
 
-# in the screen - (0, 0) is top left corner
+
+
+
+# in the screen - (0, 0) is top left corner!
 
 video_handler = VideoHandler()
 
