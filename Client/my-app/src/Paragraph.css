@@ -1,0 +1,31 @@
+.spacing {
+  margin-top: 50vh;
+  padding: 10vh;
+  color: red;
+  position: relative;
+  z-index: 1; /* Set a higher z-index than the video */
+}
+
+.fixedElement {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 101; /* Ensure the fixed element stays on top */
+}
+#scrollspyHeading3{
+  color: gold;
+    position: relative;
+  z-index: 1; /* Set a higher z-index than the video */
+}
+/*.av {*/
+/*  color: orange;*/
+/*  position: relative;*/
+/*  z-index: 2; !* Set a higher z-index for visibility *!*/
+/*}*/
+.paragraph-content {
+  color: orange;
+  position: relative;
+  z-index: 2; /* Make sure the text is above the video */
+  padding-left: 10vh;
+
+}

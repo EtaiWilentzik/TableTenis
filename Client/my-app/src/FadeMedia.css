@@ -1,0 +1,33 @@
+
+.container {
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+
+
+}
+.image-fade {
+   margin-top: 50%;
+  left: 50%; /* Move right to the center */
+  width: 40%;
+  height: 40%;
+  opacity: 1;
+  align-content: center;
+  align-items: center;
+  transition: opacity 3s ease-in-out;
+}
+
+.video-fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  object-fit: cover; /* Ensures the video covers the entire area without distortion */
+  z-index: -1; /* Puts the video behind other content */
+   transition: opacity 3s ease-out;
+}
+
+.fade-out {
+  opacity: 0;
+}

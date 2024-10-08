@@ -1,0 +1,60 @@
+
+
+/*#menu {*/
+/*  display: flex;*/
+/*  align-items: center;  !* Vertically centers the items *!*/
+/*  justify-content: center;  !* Horizontally centers the items *!*/
+/*  height: 100vh;*/
+/*  width: 100vw;*/
+/*}*/
+
+/*#menu-items {*/
+/*  display: flex; !* Use flex to align menu items in a row *!*/
+/*  flex-direction: row; !* Row layout *!*/
+
+/*  position: relative;*/
+/*  z-index: 2;*/
+/*}*/
+/*#menu-items:hover > .menu-item {*/
+/*  opacity: 0.3;*/
+/*}*/
+/*#menu-items:hover > .menu-item:hover {*/
+/*  opacity: 1;*/
+/*}*/
+/*.menu-item {*/
+/*  color: white;*/
+/*  cursor: pointer;*/
+/*  display: block;*/
+/*  font-family: 'Ibarra Real Nova', serif;*/
+/*  font-size: clamp(3rem, 5vw, 5rem);*/
+/*  padding: clamp(0.25rem, 0.5vw, 1rem) 2rem; !* Added horizontal padding for spacing *!*/
+/*  text-decoration: none;*/
+/*  transition: opacity 400ms ease;*/
+/*}*/
+.nav-link:hover {
+  background-color: gray;
+  color: white !important;
+  transition: background-color 0.3s ease;
+
+}
+#nav{
+    background-color: black;
+}
+#navbar {
+
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+
+.nav-item{
+   font-size: 2rem;
+    /*color: #61dafb;*/
+  padding: 1.5rem;
+}
+.nav-link {
+  color: #61dafb !important; /* Apply the blue color to the nav links */
+}
+
+
+

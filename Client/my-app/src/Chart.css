@@ -1,0 +1,33 @@
+.circle {
+  stroke: #1C256b;
+  fill: none;
+  stroke-width: 20px;
+  stroke-dasharray: 276.014;
+  stroke-dashoffset: 276.014;
+  transition: stroke-dashoffset 2s ease-out;
+}
+
+.circle2 {
+  stroke: #61dafb;
+  fill: none;
+  stroke-width: 20px;
+  stroke-dasharray: 432.839;
+  stroke-dashoffset: 432.839;
+  transition: stroke-dashoffset 2s ease-out;
+}
+
+.circle.visible {
+  stroke-dashoffset: 90;
+}
+
+.circle.hidden {
+  stroke-dashoffset: 0;
+}
+
+.circle2.visible {
+  stroke-dashoffset: 90;
+}
+
+.circle2.hidden {
+  stroke-dashoffset: 0;
+}

@@ -1,0 +1,9 @@
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally centers the content */
+    justify-content: flex-start; /* Aligns the content at the top of the container */
+    min-height: 100vh; /* Full viewport height */
+    text-align: center;
+    padding-top: 20px; /* Optional: Adds spacing from the top */
+}

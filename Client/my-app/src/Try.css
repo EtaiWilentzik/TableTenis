@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  align-items: stretch; /* Makes sure both divs stretch to the same height */
+}
+
+.content {
+  flex: 1; /* Allows the content div to take available space */
+  padding: 20px; /* Add some padding if needed */
+}
+
+.image-container {
+  flex: 1; /* Allows the image div to take available space */
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+}
+
+.responsive-image {
+  width: 100%; /* Makes the image take up the full width of its container */
+  height: auto; /* Maintains the aspect ratio */
+  object-fit: cover; /* Ensures the image covers the area */
+}

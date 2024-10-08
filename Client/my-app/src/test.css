@@ -1,0 +1,15 @@
+body {
+   background-color: black;
+}
+.nav{
+    background-color: black;
+    font-size: 20px;
+
+}
+.nav .nav-link {
+  color: white;
+}
+
+.nav .nav-link:hover {
+  color: lightgray;  /* Optional: Add a hover effect */
+}

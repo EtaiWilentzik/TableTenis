@@ -1,32 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
-import {useState} from "react";
 
+import styles from './App.css';
+
+// import {useState} from "react";
+// import Chart from "./Chart";
+// import Demo from './demo';
+// import Video from "./Video";
+import NavBar, {Nav} from "./NavBar"
+
+import FadeMedia from './FadeMedia'; // Import the new component
+// import CoolStaff from "./CoolStaff";
+// import About from "./About";
+// import {ParagraphsContainer} from "./Paragraph";
+// import Video from "./Video";
+import {GPT, Log, LogIn, Reg, Register} from "./LogIn";
+import About from "./About";
+import Video from "./Video";
+import {ParagraphsContainer} from "./Paragraph";
+import MovingText from "./MovingText";
+// import CoolStaff from "./CoolStaff";
+// import Try from './Try';
 function App() {
-    const [count, setCount] = useState(0);
-        return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         dddddds
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-            <br>
-            </br>
-            count: {count}
+    return (
+        <>
+            {/*<p>hello world</p>*/}
+            {/*<Video/>*/}
+            {/*<About/>*/}
+            {/*<FadeMedia /> /!* Use the FadeMedia component here *!/*/}
+            {/*<NavBar/>*/}
+            {/*<ParagraphsContainer/>*/}
+            {/*<LogIn/>*/}
+            {/*<Register/>*/}
+            {/*<Reg/>*/}
+            {/*            <MovingText text="This is my scrolling text. You can add any data you want here!" />*/}
+            <Nav/>
 
-        </a>
-        <button onClick={() => setCount(count + 1)}>Click me</button>
-      </header>
-    </div>
-  );
+            {/*<Log/>>*/}
+            {/*<GPT/>*/}
+            {/*      <Try />*/}
+            {/*<CoolStaff/>*/}
+            {/* <Demo logo={logo} /> */}
+
+        </>
+    );
 }
 
 export default App;
