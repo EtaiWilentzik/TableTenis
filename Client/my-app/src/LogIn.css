@@ -1,6 +1,7 @@
-#left {
-  /*background-color: blanchedalmond;*/
-}
+/*#left {*/
+/*  !*background-color: blanchedalmond;*!*/
+
+/*}*/
 .aaaa{
     /*background-color: blanchedalmond;*/
 }
@@ -10,64 +11,24 @@
 /*}*/
 
 .row-equal-height {
-  display: flex;
+  /*display: flex;*/
   padding-top: 10rem;
 }
-.full-img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover; /* Ensures the image covers the entire div without distortion */
+
+
+/*.full-img {*/
+/*height: auto;*/
+/*  !*width: 100%;*!*/
+/*  !*object-fit: cover; !* Ensures the image covers the entire div without distortion *!*!*/
+/*}*/
+
+
+
+
+
+body{
+  background-color:#040426;
 }
-
-
-
-.neon-div {
-  background-color: #141414; /* Dark background */
-  color: yellowgreen;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-
-  /* Neon Glow Effect with Mixed Colors */
-  box-shadow:
-      0 0 10px rgba(0, 255, 255, 0.7),  /* Neon blue glow */
-      0 0 20px rgba(0, 255, 255, 0.7),  /* Neon blue glow */
-      0 0 40px rgba(0, 255, 0, 0.7),    /* Neon green glow */
-      0 0 80px rgba(255, 165, 0, 0.7),  /* Neon orange glow */
-      0 0 100px rgba(255, 165, 0, 0.8); /* Stronger neon orange glow */
-
-  /* Pulsing Neon Animation */
-  animation: neon-glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes neon-glow {
-  0% {
-    box-shadow:
-      0 0 5px rgba(0, 255, 255, 0.5),
-      0 0 10px rgba(0, 255, 255, 0.5),
-      0 0 20px rgba(0, 255, 0, 0.5),
-      0 0 40px rgba(255, 165, 0, 0.5),
-      0 0 60px rgba(255, 165, 0, 0.6);
-  }
-  50% {
-    box-shadow:
-      0 0 10px rgba(0, 255, 255, 0.7),
-      0 0 20px rgba(0, 255, 255, 0.7),
-      0 0 40px rgba(0, 255, 0, 0.7),
-      0 0 80px rgba(255, 165, 0, 0.7),
-      0 0 100px rgba(255, 165, 0, 0.8);
-  }
-  100% {
-    box-shadow:
-      0 0 20px rgba(0, 255, 255, 1),
-      0 0 40px rgba(0, 255, 255, 1),
-      0 0 60px rgba(0, 255, 0, 1),
-      0 0 100px rgba(255, 165, 0, 1),
-      0 0 150px rgba(255, 165, 0, 1);
-  }
-}
-
-
 
 .neon-div-2 {
   background-color: #141414; /* Dark background to highlight the neon effect */

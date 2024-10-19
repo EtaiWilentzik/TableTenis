@@ -1,27 +1,27 @@
 
-import styles from './App.css';
-
-// import {useState} from "react";
-// import Chart from "./Chart";
-// import Demo from './demo';
-// import Video from "./Video";
-import NavBar, {Nav} from "./NavBar"
-
-import FadeMedia from './FadeMedia'; // Import the new component
-// import CoolStaff from "./CoolStaff";
-// import About from "./About";
-// import {ParagraphsContainer} from "./Paragraph";
-// import Video from "./Video";
-import {GPT, Log, LogIn, Reg, Register} from "./LogIn";
+import { Log} from "./LogIn";
+import {Reg} from "./Register"
 import About from "./About";
 import Video from "./Video";
-import {ParagraphsContainer} from "./Paragraph";
-import MovingText from "./MovingText";
-// import CoolStaff from "./CoolStaff";
-// import Try from './Try';
+import "./App.css"
+import  {Route,Routes}from "react-router-dom"
+import {ErrorRoute} from "./ErrorRoute";
+import {ScoreBoard} from "./ScoreBoard";
+import {StartGame} from "./StartGame";
 function App() {
     return (
         <>
+             {/*<Nav/>*/}
+            <Routes>
+                <Route path="/" element={<Video/>}/>
+                <Route path="/register" element={<Reg/>}/>
+                <Route path="/login" element={<Log/>}/>
+                <Route path="/about" element={<About/>}/>
+                <Route path="/start" element={<StartGame/>}/>
+                <Route path="/score" element={<ScoreBoard/>}/>
+                <Route path="/*" element={<ErrorRoute/>}/>
+            </Routes>
+
             {/*<p>hello world</p>*/}
             {/*<Video/>*/}
             {/*<About/>*/}
@@ -32,7 +32,7 @@ function App() {
             {/*<Register/>*/}
             {/*<Reg/>*/}
             {/*            <MovingText text="This is my scrolling text. You can add any data you want here!" />*/}
-            <Nav/>
+
 
             {/*<Log/>>*/}
             {/*<GPT/>*/}

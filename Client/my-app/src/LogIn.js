@@ -1,4 +1,5 @@
 import  "./LogIn.css"
+import {Nav} from "./NavBar";
 
 const LogIn=()=>{
     return (
@@ -36,111 +37,50 @@ const LogIn=()=>{
     )
 
 }
+const F=()=>{
+    console.log(window.innerWidth);  // Logs the current width of the browser window
+console.log("the height is "+window.innerHeight);
 
 
-const Register = () => {
-    return (
-        <>
-            <div className="d-flex align-items-center flex-column change aaaa">
-                <h2 className="display-4 mb-5  ">Register</h2>
-                <div className="input-group mb-5 w-75">
-                    <span className="input-group-text"><i className="bi bi-person"></i></span>
-                    <div className="form-floating">
-                        <input type="text" className="form-control" id="floatingInputGroup1" placeholder="Username"/>
-                        <label htmlFor="floatingInputGroup1">Username</label>
-                    </div>
-                </div>
-
-                <div className="input-group mb-5 w-75 ">
-                    <span className="input-group-text"><i className="bi bi-envelope"></i></span>
-                    <div className="form-floating">
-                        <input type="text" className="form-control" id="floatingInputGroup1" placeholder="Email"/>
-                        <label htmlFor="floatingInputGroup1">Email</label>
-                    </div>
-                </div>
-
-                <div className="input-group mb-5 w-75">
-                    <span className="input-group-text"><i className="bi bi-lock-fill"></i></span>
-                    <div className="form-floating">
-                        <input type="password" className="form-control" id="floatingInputGroup3"
-                               placeholder="Password"/>
-                        <label htmlFor="floatingInputGroup1">Password</label>
-                    </div>
-                </div>
-                <div className="a">
-                    <button type="submit" className="btn btn-primary mb-5">Register</button>
-                </div>
-            </div>
-        </>
-    );
 }
-
-const Reg = () => {
-    return (
-        <div className="container">
-            <div className="row justify-content-center row-equal-height">
-                <div className=" col-12  col-md-5   neon-div order-2 order-md-1" id="left"> neon-div
-                    <Register/>
-                </div>
-                <div className=" col-12 col-md-5 order-1 order-md-2" id="right" >
-                    <img
-                        src="picture1.jpg"
-                        alt="ping pong paddles"
-                        className="img-fluid full-img "
-                    />
-                </div>
-            </div>
-        </div>
-
-    );
-};
-
 
 const Log = () => {
     return (
-        <div className="container">
+        <>
+            <F/>
+            <Nav/>
+            <div className="container">
 
-            {/*<div className="  row justify-content-center align-items-center vh-100 row-equal-height">*/}
-
-            {/*    <div className="col-md-4 " id="left">*/}
-            {/*        <Register/>*/}
-            {/*    </div>*/}
-            {/*    <div className="col-md-4  " id="right">*/}
-
-            {/*        sdafasdfadsfadsfadsfa*/}
-            {/*        /!*<img*!/*/}
-            {/*        /!*    src={"pingpong.jpg"}*!/*/}
-            {/*        /!*    alt="ping pong paddles"*!/*/}
-            {/*        /!*    className="img-fluid  "*!/*/}
-            {/*        /!*//*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-
-
-            <div className="row  justify-content-center row-equal-height">
-                <div className="col-md-4  neon-div-2 " id="left">
-                    <LogIn/>
-                </div>
-                <div className="col-md-4" id="right" >
-                    <img
-                        src="picture2.jpg"
-                        alt="ping pong paddles"
-                        className="img-fluid full-img "
-                    />
+                <div className="row  justify-content-center row-equal-height">
+                    <div className=" col-md-4  neon-div-2  " id="left">
+                        <LogIn/>
+                    </div>
+                    <div className="col-md-7" id="right">
+                        <img
+                            src="/picture2.jpg"
+                            alt="ping pong paddles"
+                            className="img-fluid full-img "
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
+
 
     );
 };
- const GPT=()=>{
-     return (
-         <div className="neon-div">
-             Your content here
-         </div>
-
-     )
- }
 
 
-export {LogIn, Register, Reg, Log,GPT}
+
+
+const GPT = () => {
+    return (
+        <div className="neon-div">
+            Your content here
+        </div>
+
+    )
+}
+
+
+export {LogIn, Log, GPT}

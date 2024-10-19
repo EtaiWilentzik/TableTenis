@@ -1,4 +1,6 @@
-#body{
-  width:100vw;
-  height:100vh;
+h2 {
+    font-family: 'Varela Round' , sans-serif !important; /* Wrap the font name in quotes */
+}
+body{
+     font-family: "Varela Round", sans-serif;
 }

@@ -6,16 +6,16 @@
 
 
 }
-.image-fade {
-   margin-top: 50%;
-  left: 50%; /* Move right to the center */
-  width: 40%;
-  height: 40%;
-  opacity: 1;
-  align-content: center;
-  align-items: center;
-  transition: opacity 3s ease-in-out;
-}
+/*.image-fade {*/
+/*   margin-top: 50%;*/
+/*  left: 50%; !* Move right to the center *!*/
+/*  width: 40%;*/
+/*  height: 40%;*/
+/*  opacity: 1;*/
+/*  align-content: center;*/
+/*  align-items: center;*/
+/*  transition: opacity 3s ease-in-out;*/
+/*}*/
 
 .video-fade {
   position: absolute;
